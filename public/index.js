@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const titleInput = document.getElementById('title-input');
     const contentInput = document.getElementById('content-input');
     const notesList = document.getElementById('notes-list');
+    //console.log(form);
   
     // Fetch all notes from the server
     fetch('http://localhost:3500/api/notes')
