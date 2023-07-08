@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const titleInput = document.getElementById('title-input');
     const contentInput = document.getElementById('content-input');
     const notesList = document.getElementById('notes-list');
-    const uri="https://ci-workflow.vercel.app/";
+    const uri=process.env.BACKEND_URI;
     //console.log(form);
   
     // Fetch all notes from the server
