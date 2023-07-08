@@ -4,6 +4,12 @@ import connectDB from './mongodb/db.js';
 import cors from 'cors';
 import Note from './mongodb/models/notemodel.js';
 import path from 'path';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import User from './mongodb/models/usermodel.js';
+
+
+
 
 dotenv.config();
 
@@ -14,25 +20,29 @@ app.use(cors());
 app.use(express.json());
 
 const router = express.Router();
+const uri=process.env.BACKEND_URL;
 
-// Serve static files from the frontend directory
-const __dirname = path.resolve();
-app.use(express.static(path.join(__dirname, 'public')));
 
-// GET request for the root URL
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  const filePath = path.join(__dirname,"index.html");
+  res.sendFile(filePath);
 });
 
 // GET all notes
 router.get('/api/notes', async (req, res) => {
   try {
     const notes = await Note.find();
-    res.json(notes); // Make sure to return the notes array as the response
+    res.json(notes);
   } catch (error) {
     res.status(500).json({ message: error.message });
-  }
+    }
 });
+
+
+router.get("/api/test", (req, res) => {
+  res.send("Hello World");
+})
+
 
 
 // POST a new note
@@ -66,5 +76,6 @@ const server = async () => {
   }
 };
 
+app.use(router);
 server();
 
