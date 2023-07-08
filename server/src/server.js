@@ -28,7 +28,8 @@ app.get('/', (req, res) => {
 router.get('/api/notes', async (req, res) => {
   try {
     const notes = await Note.find();
-    res.json(notes); // Make sure to return the notes array as the response
+    // res.json(notes); // Make sure to return the notes array as the response
+    res.status(200).json(notes??{message: "No notes found"});
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
