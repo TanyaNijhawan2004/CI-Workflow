@@ -3,7 +3,7 @@ const form = document.getElementById('note-form');
     const titleInput = document.getElementById('title-input');
     const contentInput = document.getElementById('content-input');
     const notesList = document.getElementById('notes-list');
-    const uri="https://ci-workflow-b1rq.vercel.app";
+    const uri="https://server-one-steel.vercel.app";
     //console.log(form);
   
     // Fetch all notes from the server
@@ -15,10 +15,15 @@ const form = document.getElementById('note-form');
         });
       })
       .catch(error => console.error('Error:', error));
+
+      fetch(`${uri}/api/test`)
+      .then(response => response.json())
+      .then(notes => {
+        console.log(notes);
+      })
   
     // Add new note on form submit
     form.addEventListener('submit', event => {
-      alert("hii");
       event.preventDefault();
   
       const title = titleInput.value;
