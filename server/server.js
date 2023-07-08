@@ -22,7 +22,7 @@ app.use(express.json());
 const router = express.Router();
 const uri=process.env.BACKEND_URL;
 
-
+const __dirname = path.resolve();
 app.get('/', (req, res) => {
   const filePath = path.join(__dirname,"index.html");
   res.sendFile(filePath);
