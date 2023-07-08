@@ -50,6 +50,10 @@ router.post('/api/notes', async (req, res) => {
   }
 });
 
+router.get("/api/test", (req, res) => {
+  res.send("Hello World");
+})
+
 // Register the router middleware
 app.use(router);
 
