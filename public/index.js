@@ -4,10 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const titleInput = document.getElementById('title-input');
     const contentInput = document.getElementById('content-input');
     const notesList = document.getElementById('notes-list');
+    const uri="https://ci-workflow.vercel.app/";
     //console.log(form);
   
     // Fetch all notes from the server
-    fetch('http://localhost:3500/api/notes')
+    fetch(`${uri}api/notes`)
       .then(response => response.json())
       .then(notes => {
         notes.forEach(note => {
@@ -29,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
       const newNote = { title, content };
   
-      fetch('http://localhost:3500/api/notes', {
+      fetch(`${uri}api/notes`,{
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newNote),
