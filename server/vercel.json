@@ -1,7 +1,3 @@
 {
-    "rewrites": [{ "source": "/(.*)", "destination": "/api" }],
-    
-    "functions": {
-        "timeout": 30
-      }
+    "rewrites": [{ "source": "/(.*)", "destination": "/api" }]
 }

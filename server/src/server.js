@@ -17,6 +17,7 @@ app.use(cors({
 app.use(express.json());
 
 const router = express.Router();
+app.options('*', cors());
 
 const __dirname = path.resolve();
 app.get('/', (req, res) => {
@@ -66,4 +67,6 @@ const server = async () => {
 };
 
 server();
+
+export default app;
 
