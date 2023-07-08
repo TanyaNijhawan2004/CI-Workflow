@@ -2,14 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "server/npm-start-command",
+      "src": "./server.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "server/npm-start-command"
+      "dest": "./server.js"
     }
   ]
 }
