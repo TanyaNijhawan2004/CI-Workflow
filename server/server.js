@@ -7,8 +7,11 @@ import path from 'path';
 
 dotenv.config();
 
+
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: '*'
+}));
 
 // Middleware
 app.use(express.json());

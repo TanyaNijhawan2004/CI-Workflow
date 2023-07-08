@@ -1,14 +1,13 @@
-// script.js
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('note-form');
+
+const form = document.getElementById('note-form');
     const titleInput = document.getElementById('title-input');
     const contentInput = document.getElementById('content-input');
     const notesList = document.getElementById('notes-list');
-    const uri=process.env.BACKEND_URI;
+    const uri="https://ci-workflow-b1rq.vercel.app";
     //console.log(form);
   
     // Fetch all notes from the server
-    fetch(`${uri}api/notes`)
+    fetch(`${uri}/api/notes`)
       .then(response => response.json())
       .then(notes => {
         notes.forEach(note => {
@@ -19,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
     // Add new note on form submit
     form.addEventListener('submit', event => {
+      alert("hii");
       event.preventDefault();
   
       const title = titleInput.value;
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
       const newNote = { title, content };
   
-      fetch(`${uri}api/notes`,{
+      fetch(`${uri}/api/notes`,{
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newNote),
@@ -53,6 +53,4 @@ document.addEventListener('DOMContentLoaded', () => {
         <p>${note.content}</p>
       `;
       notesList.appendChild(noteElement);
-    }
-  });
-  
+  }
